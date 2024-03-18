@@ -5,7 +5,7 @@ const Btn: FC<BtnType> = ({ value, className, type, handler, variant }) => {
   return (
     <button
       onClick={handler}
-      className={`block w-full bg-primary-green text-base text-white rounded-3xl p-3 hover:bg-secondary-green transition-all ${className}`}
+      className={`block w-full bg-primary-green text-base text-white rounded-3xl p-3 hover:bg-hover-btn transition-all ${className}`}
       type={type}
     >
       {value}

@@ -38,3 +38,9 @@ export type ChatType = {
   isActive?: number;
   setIsActive: any;
 };
+
+export type chatMsgType = {
+  id: number;
+  text: string;
+  userId: number;
+};

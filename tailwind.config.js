@@ -12,6 +12,7 @@ export default {
         'secondary-grey': '#758A89',
         'primary-green': '#329993',
         'secondary-green': '#E8F7F7',
+        'hover-btn': '#206763',
       },
       borderRadius: {
         'income-msg': '20px 20px 20px 0',
