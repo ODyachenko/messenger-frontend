@@ -1,7 +1,7 @@
 import React, { FC } from 'react';
 
 const Nav: FC = () => {
-  return <div>Nav</div>;
+  return <nav className="nav py-8 px-7"></nav>;
 };
 
 export default Nav;

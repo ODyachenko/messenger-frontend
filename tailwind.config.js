@@ -7,9 +7,11 @@ export default {
     },
     extend: {
       colors: {
+        'secondary-black': '#465352',
         'primary-grey': '#EEF1F1',
+        'secondary-grey': '#758A89',
         'primary-green': '#329993',
-        'secondary-green': '#216763',
+        'secondary-green': '#E8F7F7',
       },
       borderRadius: {
         'income-msg': '20px 20px 20px 0',

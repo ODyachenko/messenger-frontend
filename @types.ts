@@ -28,3 +28,13 @@ export type LoginUserType = {
   email: string;
   password: string;
 };
+
+export type ChatType = {
+  id: number;
+  name: string;
+  last_message: string;
+  last_online: string;
+  is_read: boolean;
+  isActive?: number;
+  setIsActive: any;
+};

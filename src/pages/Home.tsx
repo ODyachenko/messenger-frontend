@@ -1,7 +1,8 @@
 import React, { FC } from 'react';
+import Sidebar from '../components/Sidebar/Sidebar';
 
 const Home: FC = () => {
-  return <div>Home</div>;
+  return <Sidebar />;
 };
 
 export default Home;
