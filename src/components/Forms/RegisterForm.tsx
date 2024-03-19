@@ -1,8 +1,11 @@
-import React, { FC } from 'react';
+import { FC } from 'react';
 import { useForm, SubmitHandler } from 'react-hook-form';
 import Field from '../../UI/Field';
 import Btn from '../../UI/Btn';
 import { CreateUserType } from '../../../@types';
+import { useCreateUserMutation } from '../../redux/API/userAPI';
+import { useNavigate } from 'react-router-dom';
+import { BeatLoader } from 'react-spinners';
 
 const RegisterForm: FC = () => {
   const {
@@ -10,9 +13,21 @@ const RegisterForm: FC = () => {
     handleSubmit,
     formState: { errors },
   } = useForm<CreateUserType>();
+  const [createUser, { isLoading }] = useCreateUserMutation();
+  const navigate = useNavigate();
 
-  const onSubmit: SubmitHandler<CreateUserType> = (data) => {
-    console.log(data);
+  const onSubmit: SubmitHandler<CreateUserType> = async (data) => {
+    try {
+      const response = await createUser(data).then((res: any) => res);
+
+      if (response.error) {
+        throw response.error;
+      }
+      navigate(-1);
+    } catch (error: any) {
+      console.error(error.data.non_field_errors);
+      // setAuthErrors(error.data.non_field_errors);
+    }
   };
 
   return (
@@ -98,7 +113,11 @@ const RegisterForm: FC = () => {
         }}
         errors={errors}
       />
-      <Btn type="submit" value="Sign Up" variant="primary" />
+      <Btn
+        type="submit"
+        value={isLoading ? <BeatLoader color="#fff" /> : `Sign Up`}
+        variant="primary"
+      />
     </form>
   );
 };

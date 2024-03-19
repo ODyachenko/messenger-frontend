@@ -10,7 +10,7 @@ export type FieldType = {
 
 export type BtnType = {
   className?: string;
-  value: string;
+  value: string | React.ReactNode;
   handler?: () => void;
   type: 'button' | 'submit';
   variant: 'primary' | 'secondary';
