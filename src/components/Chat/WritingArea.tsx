@@ -4,7 +4,7 @@ import ChatActions from './ChatActions';
 
 const WritingArea: FC = () => {
   return (
-    <form className=" bg-white rounded-2xl">
+    <form className=" bg-white rounded-2xl lg:transition-shadow lg:hover:shadow-field-shadow">
       <textarea
         className="block w-full h-28 text-sm rounded-t-2xl resize-none border-b border-solid border-primary-grey p-5"
         placeholder="Write a message..."

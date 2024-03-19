@@ -16,7 +16,7 @@ const Field: FC<FieldType> = ({
       <input
         className={`${
           className ? className : ''
-        } bg-white border border-solid border-primary-grey rounded-md px-4 py-2`}
+        } bg-white border border-solid border-primary-grey rounded-md px-4 py-2 `}
         type={type}
         onChange={handler}
         placeholder={placeholder}

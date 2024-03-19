@@ -4,7 +4,7 @@ import Chat from '../components/Chat/Chat';
 
 const Home: FC = () => {
   return (
-    <div className="wrapper min-h-screen flex">
+    <div className="wrapper h-screen flex">
       <Sidebar />
       <Chat />
     </div>

@@ -4,7 +4,7 @@ import ChatMessage from './ChatMessage';
 
 const ChatMessages: FC = () => {
   return (
-    <ul className="flex flex-col gap-11 mb-11">
+    <ul className="h-chat-height flex flex-col gap-11 overflow-auto mb-11">
       {chatMessages.map((message) => (
         <ChatMessage key={message.id} {...message} />
       ))}

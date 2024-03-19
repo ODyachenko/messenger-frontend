@@ -18,6 +18,12 @@ export default {
         'income-msg': '20px 20px 20px 0',
         'outcome-msg': '20px 20px 0 20px',
       },
+      boxShadow: {
+        'field-shadow': 'rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;',
+      },
+      height: {
+        'chat-height': 'calc(100vh - 344px)',
+      },
     },
   },
   plugins: [],

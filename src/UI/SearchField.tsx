@@ -7,7 +7,7 @@ type SearchFieldProps = {
 const SearchField: FC<SearchFieldProps> = ({ className }) => {
   return (
     <label
-      className={`relative block border border-solid border-primary-grey rounded-3xl py-3 pl-14 pr-3 cursor-pointer ${className}`}
+      className={`relative block border border-solid border-primary-grey rounded-3xl py-3 pl-14 pr-3 cursor-pointer lg:transition-shadow lg:hover:shadow-field-shadow ${className}`}
     >
       <svg
         className="absolute left-5"
