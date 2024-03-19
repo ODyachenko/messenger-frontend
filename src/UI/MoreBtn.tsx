@@ -1,8 +1,12 @@
 import React, { FC } from 'react';
+import { ActionBtn } from '../../@types';
 
-const MoreBtn: FC = () => {
+const MoreBtn: FC<ActionBtn> = ({ className, handler }) => {
   return (
-    <button className="flex items-center justify-center w-14 h-14 border border-solid border-primary-grey rounded-full transition-all hover:bg-primary-green">
+    <button
+      onClick={handler}
+      className={`flex items-center justify-center w-14 h-14 border border-solid border-primary-grey rounded-full transition-all hover:bg-primary-green ${className}`}
+    >
       <svg
         width="22"
         height="6"

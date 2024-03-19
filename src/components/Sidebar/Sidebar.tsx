@@ -6,7 +6,7 @@ import ChatsList from '../Chat/ChatsList';
 
 const Sidebar: FC = () => {
   return (
-    <aside className="sidebar max-w-96 py-8 border-r border-solid border-primary-grey">
+    <aside className="sidebar max-w-96 py-8 shrink-0 border-r border-solid border-primary-grey">
       <div className="px-7">
         <CurrentUser />
         <SearchField className="mb-4" />

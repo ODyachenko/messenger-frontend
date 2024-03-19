@@ -16,6 +16,11 @@ export type BtnType = {
   variant: 'primary' | 'secondary';
 };
 
+export type ActionBtn = {
+  className?: string;
+  handler?: () => void;
+};
+
 export type CreateUserType = {
   first_name: string;
   last_name: string;
