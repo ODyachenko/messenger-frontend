@@ -6,12 +6,14 @@ import { CreateUserType } from '../../../@types';
 interface CounterState {
   isAuth: boolean;
   currentUser: Partial<CreateUserType>;
+  usersList: Partial<CreateUserType>[];
 }
 
 // Define the initial state using that type
 const initialState: CounterState = {
   isAuth: false,
   currentUser: {},
+  usersList: [],
 };
 
 export const userSlice = createSlice({
@@ -25,8 +27,11 @@ export const userSlice = createSlice({
     setCurrentUser: (state, action: PayloadAction<CreateUserType>) => {
       state.currentUser = action.payload;
     },
+    setUsersList: (state, action: PayloadAction<CreateUserType>) => {
+      state.usersList = action.payload;
+    },
   },
 });
 
-export const { setIsAuth, setCurrentUser } = userSlice.actions;
+export const { setIsAuth, setCurrentUser, setUsersList } = userSlice.actions;
 export default userSlice.reducer;

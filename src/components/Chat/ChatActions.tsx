@@ -1,6 +1,6 @@
-import React from 'react';
+import React, { FC } from 'react';
 
-const ChatActions = () => {
+const ChatActions: FC = () => {
   return (
     <ul className="flex items-center gap-4">
       <li>

@@ -1,8 +1,9 @@
 import React, { FC } from 'react';
+import { ActionBtn } from '../../@types';
 
-const SendBtn: FC = () => {
+const SendBtn: FC<ActionBtn> = ({ className, handler }) => {
   return (
-    <button>
+    <button onClick={handler} className={`${className}`}>
       <svg
         width="17"
         height="18"

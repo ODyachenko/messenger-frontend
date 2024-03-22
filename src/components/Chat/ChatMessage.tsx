@@ -1,19 +1,29 @@
-import React, { FC } from 'react';
-import avatar from '../../../public/avatar.png';
-import { chatMsgType } from '../../../@types';
+import { FC } from 'react';
+import { useAppSelector } from '../../hooks/hooks';
+import { ChatMsgType } from '../../../@types';
 
-const ChatMessage: FC<chatMsgType> = ({ id, text, userId }) => {
+const ChatMessage: FC<ChatMsgType> = ({ text, user, created_at_formatted }) => {
+  const { currentUser } = useAppSelector((state) => state.user);
+  const { current_users } = useAppSelector((state) => state.chat.activeChat);
+  const recieverAvatar = `${import.meta.env.VITE_APP_URL}${
+    current_users?.avatar
+  }`;
+
   return (
     <li
       className={`flex max-w-96 items-end gap-3 ${
-        userId !== 1 ? 'flex-row-reverse self-end' : ''
+        user.id !== currentUser.id ? 'flex-row-reverse self-end' : ''
       }`}
     >
-      <img className="w-9 h-9 rounded-full" src={avatar} alt="" />
+      <img
+        className="w-9 h-9 rounded-full"
+        src={user.id !== currentUser.id ? currentUser.avatar : recieverAvatar}
+        alt=""
+      />
       <div className="relative">
         <p
           className={`p-5 text-sm ${
-            userId === 1
+            user.id === currentUser.id
               ? ' bg-white rounded-income-msg'
               : ' bg-primary-green rounded-outcome-msg text-white'
           }`}
@@ -22,7 +32,7 @@ const ChatMessage: FC<chatMsgType> = ({ id, text, userId }) => {
         </p>
         <span
           className={`absolute -bottom-5 flex items-center gap-1 text-xs text-secondary-grey ${
-            userId !== 1 ? 'right-0' : ''
+            user.id !== currentUser.id ? 'right-0' : ''
           }`}
         >
           {true && (
@@ -39,7 +49,7 @@ const ChatMessage: FC<chatMsgType> = ({ id, text, userId }) => {
               />
             </svg>
           )}{' '}
-          10:45 AM
+          {created_at_formatted}
         </span>
       </div>
     </li>

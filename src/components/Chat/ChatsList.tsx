@@ -1,22 +1,19 @@
-import React, { FC, useState } from 'react';
-import { usersList } from '../../data/usersList';
+import { FC } from 'react';
 import ChatsItem from './ChatsItem';
+import { useAppSelector } from '../../hooks/hooks';
 import './styles.scss';
 
 const ChatsList: FC = () => {
-  const [isActive, setIsActive] = useState<number>(1);
+  const { chatList } = useAppSelector((state) => state.chat);
 
   return (
-    <ul className="chats__list divide-y divide-solid divide-primary-grey">
-      {usersList.map((chat) => (
-        <ChatsItem
-          key={chat.id}
-          {...chat}
-          isActive={isActive}
-          setIsActive={setIsActive}
-        />
-      ))}
-    </ul>
+    chatList && (
+      <ul className="chats__list divide-y divide-solid divide-primary-grey">
+        {chatList.map((chat, index) => (
+          <ChatsItem key={index} {...chat} />
+        ))}
+      </ul>
+    )
   );
 };
 

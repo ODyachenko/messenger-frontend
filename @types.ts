@@ -22,10 +22,12 @@ export type ActionBtn = {
 };
 
 export type CreateUserType = {
+  id?: number;
   first_name: string;
   last_name: string;
   username: string;
   email: string;
+  avatar: any;
   password: string;
 };
 
@@ -34,18 +36,38 @@ export type LoginUserType = {
   password: string;
 };
 
-export type ChatType = {
+export type UserInfoType = {
   id: number;
-  name: string;
-  last_message: string;
-  last_online: string;
-  is_read: boolean;
-  isActive?: number;
-  setIsActive: any;
+  first_name: string;
+  last_name: string;
+  username: string;
+  avatar: string;
+  email: string;
 };
 
-export type chatMsgType = {
+export type ChatMsgType = {
   id: number;
+  // room: any;
   text: string;
-  userId: number;
+  user: UserInfoType;
+  created_at_formatted: string;
+};
+
+export type ChatListType = {
+  id: number;
+  current_users: UserInfoType;
+  host: UserInfoType;
+  messages: ChatMsgType[];
+  last_message: ChatMsgType;
+};
+
+export type ChatType = {
+  id: number;
+  current_users: UserInfoType;
+  host: UserInfoType;
+  messages: ChatMsgType[];
+  last_message: ChatMsgType;
+  is_read: boolean;
+  isActive: number;
+  setIsActive: (id: number) => void;
 };

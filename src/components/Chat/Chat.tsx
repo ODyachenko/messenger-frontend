@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import { FC } from 'react';
 import RecieveUser from '../CurrentUser/RecieveUser';
 import ChatMessages from './ChatMessages';
 import WritingArea from './WritingArea';

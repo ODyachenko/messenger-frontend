@@ -1,14 +1,20 @@
-import React, { FC } from 'react';
-import { chatMessages } from '../../data/chatMessages';
+import { FC } from 'react';
 import ChatMessage from './ChatMessage';
+import { useAppSelector } from '../../hooks/hooks';
 
 const ChatMessages: FC = () => {
-  return (
+  const { messages } = useAppSelector((state) => state.chat.activeChat);
+
+  return messages ? (
     <ul className="h-chat-height flex flex-col gap-11 overflow-auto mb-11">
-      {chatMessages.map((message) => (
+      {messages.map((message) => (
         <ChatMessage key={message.id} {...message} />
       ))}
     </ul>
+  ) : (
+    <h2 className="h-chat-height px-4 font-bold flex items-center justify-center overflow-auto mb-11">
+      Ooops something wrong!!!
+    </h2>
   );
 };
 

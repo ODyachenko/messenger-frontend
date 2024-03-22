@@ -1,34 +1,41 @@
-import React, { FC } from 'react';
-import { ChatType } from '../../../@types';
-import avatar from '../../../public/avatar.png';
+import { FC } from 'react';
+import { ChatListType } from '../../../@types';
+import { useAppDispatch, useAppSelector } from '../../hooks/hooks';
+import { setActiveChat } from '../../redux/slices/chatSlice';
 
-const ChatsItem: FC<ChatType> = ({
-  id,
-  name,
-  last_message,
-  last_online,
-  is_read,
-  isActive,
-  setIsActive,
-}) => {
+const ChatsItem: FC<ChatListType> = ({ id, current_users, last_message }) => {
+  const { activeChat } = useAppSelector((state) => state.chat);
+  const dispatch = useAppDispatch();
+
+  // @TODO FIX HOST PROBLEM
+  // @TODO ADD IS_READ PROP
+
+  const is_read = true;
+
   return (
     <li
       className={`chats__list-item flex items-center gap-3 py-5 px-7 cursor-pointer transition-all ${
-        isActive === id ? 'active' : ''
+        activeChat === id ? 'active' : ''
       }`}
       onClick={() => {
-        setIsActive(id);
+        dispatch(setActiveChat(id));
       }}
     >
-      <img className="w-14 h-14 rounded-full" src={avatar} alt="" />
+      <img
+        className="w-14 h-14 rounded-full"
+        src={`${import.meta.env.VITE_APP_URL}${current_users.avatar}`}
+        alt=""
+      />
       <div className="mr-auto">
-        <h2 className="font-bold mb-1">{name}</h2>
+        <h2 className="font-bold mb-1">{`${current_users.first_name} ${current_users.last_name}`}</h2>
         <p className="text-sm text-secondary-black line-clamp-2">
-          {last_message}
+          {last_message.text}
         </p>
       </div>
       <div className="self-stretch relative">
-        <span className="text-sm text-secondary-grey">{last_online}</span>
+        <span className="text-sm text-secondary-grey">
+          {last_message.created_at_formatted}
+        </span>
         {is_read ? (
           <svg
             className="absolute bottom-0"
